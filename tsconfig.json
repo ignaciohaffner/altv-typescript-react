@@ -17,6 +17,6 @@
         "allowSyntheticDefaultImports": true,
         "declaration": false
     },
-    "include": ["./src/**/*.ts"],
-    "exclude": ["node_modules", "**/*.spec.ts", "resources", "**/*.json"]
+    "include": ["./src/**/*.ts", "node_modules/@altv/types-client/**/*"],
+    "exclude": ["**/*.spec.ts", "resources", "**/*.json"]
 }
