@@ -27,10 +27,11 @@ function App() {
     }, []);
 
     return (
-        //className={isVisible ? '' : 'hide'}
-        <div>
-            <CharacterCreation></CharacterCreation>
+        //
+        <div className={isVisible ? '' : 'hidden'}>
+            {/* <CharacterCreation></CharacterCreation> */}
             <LoginPage></LoginPage>
+            verga
         </div>
     );
 }

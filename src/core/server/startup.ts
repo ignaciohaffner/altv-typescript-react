@@ -1,4 +1,5 @@
 import './utility/ipc'; // Used to reconnect, do not remove.
+import './register/index';
 import * as alt from 'alt-server';
 
 import { connectLocalClient } from './utility/reconnect';

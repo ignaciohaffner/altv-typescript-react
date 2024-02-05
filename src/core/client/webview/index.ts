@@ -1,10 +1,11 @@
 import * as alt from 'alt-client';
 import * as native from 'natives';
+import { createWebView } from '../webviewManager';
 import { WebViewEvents } from '../../shared/webviewEvents';
 
 const F2_KEY = 113;
-let view: alt.WebView;
 let isFocused = false;
+let view = null;
 
 export function focusWebView() {
     if (isFocused) {
@@ -15,6 +16,9 @@ export function focusWebView() {
         native.triggerScreenblurFadeOut(100);
         isFocused = false;
     } else {
+        if (!view) {
+            view = createWebView();
+        }
         view.focus();
         view.emit(WebViewEvents.toggleVisibility, true);
         alt.showCursor(true);
@@ -28,16 +32,6 @@ alt.on('keydown', async (keyCode: number) => {
     if (keyCode !== F2_KEY) {
         return;
     }
-
-    if (view) {
-        focusWebView();
-        return;
-    }
-
-    view = new alt.WebView('http://assets/webviews/index.html');
-    await new Promise((resolve: (...args: any[]) => void) => {
-        view.once('load', resolve);
-    });
 
     focusWebView();
 });
